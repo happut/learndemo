@@ -1,4 +1,3 @@
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
@@ -20,28 +19,17 @@ class ProxyFactory {
         Object proxy = Proxy.newProxyInstance(
                 target.getClass().getClassLoader(),  // 目标对象使用的类加载器
                 target.getClass().getInterfaces(),   // 目标对象实现的所有接口
-                new InvocationHandler() {            // 执行代理对象方法时候触发
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args)
-                            throws Throwable {
-
-                        // 获取当前执行的方法的方法名
-                        String methodName = method.getName();
-                        // 方法返回值
-                        Object result = null;
-                        if ("find".equals(methodName)) {
-                            // 直接调用目标对象方法
-                            result = method.invoke(target, args);
-                        } else {
-                            System.out.println("开启事务...");
-                            // 执行目标对象方法
-                            result = method.invoke(target, args);
-                            System.out.println("提交事务...");
-                        }
-                        return result;
-                    }
+                (Object proxy2, Method method, Object[] args) -> {
+                    Object result = null;
+                    long start = System.nanoTime();
+                    System.out.println("执行方法为：" + method.getName());
+                    result = method.invoke(target, args);
+                    System.out.println("执行完毕，耗时为:" + (System.nanoTime() - start) / 1000000.0 + "s");
+                    return result;
                 }
+
         );
         return proxy;
     }
+
 }
