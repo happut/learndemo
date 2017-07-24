@@ -5,7 +5,10 @@
   <groupId>com.github.happut</groupId>
   <artifactId>learn-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <modules>
+        <module>learndemoproxy</module>
+    </modules>
+    <packaging>pom</packaging>
 
   <name>learn-demo</name>
   <url>http://maven.apache.org</url>
