@@ -3,6 +3,21 @@ import java.util.function.Consumer;
 
 public class Test {
     public static void main(String[] args) {
+
+        //test -sqq
+
+        //test -sqqq2
+
+        System.out.println(String.class.getName());
+        System.out.println(String.class.getCanonicalName());
+        System.out.println(String.class.getSimpleName());
+        System.out.println(String.class.getTypeName());
+
+        String aaa ="docs_9999";
+        String channel = aaa.substring("docs_".length());
+        System.out.println(channel);
+
+
         List<Integer> list = new ArrayList<Integer>();
         for (int i = 1; i < 101; i++) {
             list.add(i);
