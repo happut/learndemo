@@ -6,6 +6,8 @@ public class Test {
 
         //test -sqq
 
+        //test -sqqq2
+
         System.out.println(String.class.getName());
         System.out.println(String.class.getCanonicalName());
         System.out.println(String.class.getSimpleName());
