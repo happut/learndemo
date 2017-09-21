@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ParseLog {
     public static void main(String[] args) throws IOException {
-        String path = "d:\\microsoft_20170919.log";
+        String path = "d:\\microsoft_20170920.log";
 
         List<String> lines = FileUtils.readLines(new File(path), "utf-8");
 
@@ -47,8 +47,8 @@ public class ParseLog {
 
         }
 
-        result.add(id + "\t" + filter + "\t" + docids + "\t" + send);
-        File f = new File("d:\\result.txt");
+        result.add(id + "\t" + docids + "\t" + filter + "\t" + send);
+        File f = new File("d:\\result-20.txt");
         if (f.exists()) {
             f.delete();
         }
