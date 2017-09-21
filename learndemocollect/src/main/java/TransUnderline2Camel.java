@@ -1,5 +1,3 @@
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -8,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class transUnderline2Camel {
+public class TransUnderline2Camel {
     public static void main(String[] arg) throws IOException {
         String path = "d:\\param.txt";
         String encoding = "UTF-8";
@@ -30,16 +28,9 @@ public class transUnderline2Camel {
             trans.add(s2);
         });
 
-        JSONObject json = new JSONObject();
-        json.put("code", 1);
-        JSONArray data = new JSONArray();
-        JSONObject dataExample = new JSONObject();
         trans.forEach(s -> {
-            dataExample.put(s, "");
+            System.out.println("private String " + s + ";");
         });
-        data.add(dataExample);
-        json.put("data", data);
-        json.put("msg", "");
-        System.out.println(json.toString());
+
     }
 }
