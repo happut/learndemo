@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ParseLog {
     public static void main(String[] args) throws IOException {
-        String path = "d:\\microsoft_20170920.log";
+        String path = "e:\\microsoft_20171026.log";
 
         List<String> lines = FileUtils.readLines(new File(path), "utf-8");
 
