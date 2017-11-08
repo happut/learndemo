@@ -8,6 +8,7 @@
     <modules>
         <module>learndemoproxy</module>
         <module>learndemocollect</module>
+        <module>learndemoelasticsearch</module>
     </modules>
     <packaging>pom</packaging>
 
