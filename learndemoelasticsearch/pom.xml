@@ -11,5 +11,17 @@
 
     <artifactId>learn-demo-elasticsearch</artifactId>
 
+    <properties>
+        <es.version>5.4.3</es.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>${es.version}</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
