@@ -1,5 +1,5 @@
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -33,16 +33,16 @@ public class LearnPOIExport {
         XSSFWorkbook workBook = null;
         workBook = new XSSFWorkbook();
         // 生成一个表格
-        XSSFSheet sheet = workBook.createSheet();
+        Sheet sheet = workBook.createSheet();
         workBook.setSheetName(0, "学生信息");
         // 创建表格标题行 第一行
-        XSSFRow titleRow = sheet.createRow(0);
+        Row titleRow = sheet.createRow(0);
         for (int i = 0; i < cellTitle.length; i++) {
             titleRow.createCell(i).setCellValue(cellTitle[i]);
         }
         //插入需导出的数据
         for (int i = 0; i < dataList.size(); i++) {
-            XSSFRow row = sheet.createRow(i + 1);
+            Row row = sheet.createRow(i + 1);
             row.createCell(0).setCellValue(i + 1);
             row.createCell(1).setCellValue(dataList.get(i)[0]);
             row.createCell(2).setCellValue(dataList.get(i)[1]);
