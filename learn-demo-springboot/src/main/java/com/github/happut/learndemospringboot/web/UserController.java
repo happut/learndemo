@@ -1,6 +1,7 @@
 package com.github.happut.learndemospringboot.web;
 
 import com.github.happut.learndemospringboot.pojo.User;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -10,6 +11,7 @@ import java.util.*;
 public class UserController {
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 
+    @ApiOperation(value="获取用户列表", notes="")
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getUserList() {
         // 处理"/users/"的GET请求，用来获取用户列表
