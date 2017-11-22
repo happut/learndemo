@@ -6,7 +6,7 @@
 	<groupId>com.github.happut</groupId>
 	<artifactId>learn-demo-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>learn-demo-springboot</name>
 	<description>Demo project for Spring Boot</description>

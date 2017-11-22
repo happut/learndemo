@@ -11,7 +11,7 @@ import java.util.*;
 public class UserController {
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 
-    @ApiOperation(value="获取用户列表", notes="")
+    @ApiOperation(value="获取 用户列表", notes="")
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getUserList() {
         // 处理"/users/"的GET请求，用来获取用户列表
