@@ -1,7 +1,10 @@
 package com.github.happut.learndemospringboot.web;
 
+import com.github.happut.learndemospringboot.ITestInterface;
 import com.github.happut.learndemospringboot.pojo.User;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.collections.MapUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -11,9 +14,18 @@ import java.util.*;
 public class UserController {
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 
-    @ApiOperation(value="获取 用户列表", notes="")
+    @Autowired
+    Map<String, ITestInterface> interfaces;
+
+    @ApiOperation(value = "获取 用户列表", notes = "")
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getUserList() {
+
+        for (Map.Entry<String, ITestInterface> m:interfaces.entrySet()){
+            System.out.println(m.getKey());
+            System.out.println(m.getValue());
+        }
+
         // 处理"/users/"的GET请求，用来获取用户列表
         // 还可以通过@RequestParam从页面中传递参数来进行查询条件或者翻页信息的传递
         List<User> r = new ArrayList<User>(users.values());
