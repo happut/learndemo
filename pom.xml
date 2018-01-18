@@ -9,6 +9,8 @@
         <module>learndemoproxy</module>
         <module>learndemocollect</module>
         <module>learndemoelasticsearch</module>
+        <module>learnhbasedemo</module>
+        <module>hbase</module>
     </modules>
     <packaging>pom</packaging>
 
