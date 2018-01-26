@@ -2,7 +2,7 @@ package com.github.happut.learndemospringboot;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+@DataEngine
 public class TestTwo implements ITestInterface {
     @Override
     public String getName() {

@@ -20,5 +20,7 @@ public class Test {
             sum += Integer.valueOf(star) * Double.valueOf(ratio);
         }
         System.out.println(sum * 2 / 100.0);
+
+        java.util.UUID.randomUUID().toString().replace("-","");
     }
 }
