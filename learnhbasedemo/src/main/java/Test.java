@@ -1,9 +1,13 @@
 import com.google.common.base.Stopwatch;
+import com.google.common.util.concurrent.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Test {
@@ -28,6 +32,25 @@ public class Test {
         System.out.println(stopWatch.elapsed(TimeUnit.MILLISECONDS) / 1000.0);
 
         java.util.UUID.randomUUID().toString().replace("-", "");
+
+
+        ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
+        ListenableFuture explosion = service.submit(new Callable() {
+            public String call() {
+                return "test";
+            }
+        });
+        Futures.addCallback(explosion, new FutureCallback<String>() {
+             @Override
+            public void onSuccess(@Nullable String s) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+            }
+        });
 
 
     }
