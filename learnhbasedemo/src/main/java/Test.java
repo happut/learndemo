@@ -41,7 +41,7 @@ public class Test {
             }
         });
         Futures.addCallback(explosion, new FutureCallback<String>() {
-             @Override
+            @Override
             public void onSuccess(@Nullable String s) {
 
             }
@@ -51,7 +51,7 @@ public class Test {
 
             }
         });
-service.shutdown();
+        service.shutdown();
 
     }
 }
