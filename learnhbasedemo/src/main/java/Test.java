@@ -28,7 +28,7 @@ public class Test {
         }
         System.out.println(sum * 2 / 100.0);
 
-        stopWatch.stop();
+//        stopWatch.stop();
         System.out.println(stopWatch.elapsed(TimeUnit.MILLISECONDS) / 1000.0);
 
         java.util.UUID.randomUUID().toString().replace("-", "");
