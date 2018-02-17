@@ -11,6 +11,7 @@
         <module>learndemoelasticsearch</module>
         <module>learnhbasedemo</module>
         <module>learndemopoi</module>
+        <module>learn-demo-springboot</module>
     </modules>
     <packaging>pom</packaging>
 
