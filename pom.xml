@@ -10,7 +10,7 @@
         <module>learndemocollect</module>
         <module>learndemoelasticsearch</module>
         <module>learnhbasedemo</module>
-        <module>hbase</module>
+        <module>learndemopoi</module>
     </modules>
     <packaging>pom</packaging>
 
