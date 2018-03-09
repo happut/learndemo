@@ -12,8 +12,8 @@ public class Test7 {
 
 
         OkHttpClient client = new OkHttpClient();
-        Request r = new Request.Builder().url("http://www.baidu.com").post(RequestBody.create(MediaType.parse("application/json"), "")).build();
-        Response execute = client.newCall(r).execute();
+        Response execute = client.newCall(
+                new Request.Builder().url("http://www.baidu.com").post(RequestBody.create(MediaType.parse("application/json"), "")).build()).execute();
         System.out.println(execute.body().string());
     }
 }
