@@ -21,7 +21,7 @@ public class Test7 {
         System.out.println(execute.body().string());
 */
 
-        String urlPrefix = "http://xxxx:9999";
+        String urlPrefix = "http://123.58.179.241:9999";
 
 
         Connection.Response response = Jsoup.connect(urlPrefix + "/auth/login")
