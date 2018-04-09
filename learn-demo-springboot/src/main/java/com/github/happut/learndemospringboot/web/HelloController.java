@@ -1,16 +1,24 @@
 package com.github.happut.learndemospringboot.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class HelloController {
 
+    @Autowired
+    private RestTemplateBuilder restTemplateBuilder;
+
     @RequestMapping("/hello")
     public String index() {
-        return "Hello World";
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        String forObject = restTemplate.getForObject("http://123.58.179.241:7777/stat/status",String.class);
+        return "Hello World" + forObject;
     }
 
     @RequestMapping("/")
