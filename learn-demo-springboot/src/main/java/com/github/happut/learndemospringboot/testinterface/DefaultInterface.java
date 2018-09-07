@@ -2,10 +2,11 @@ package com.github.happut.learndemospringboot.testinterface;
 
 public interface DefaultInterface {
 
-    String a();
+    double add(double a, double b);
 
-    default String b() {
-        return "parent:b";
+    default double addThree(double a, double b, double c) {
+
+        return a + b + c;
     }
 
     static String staticMethod() {

@@ -1,20 +1,15 @@
 package com.github.happut.learndemospringboot.testinterface;
 
 public class DefaultInterfaceImpl implements DefaultInterface {
-    @Override
-    public String a() {
-        return "child:a";
-    }
 
     @Override
-    public String b() {
-        return "child:b";
+    public double add(double a, double b) {
+        return a + b;
     }
-
 
     public static void main(String[] args) {
-        DefaultInterface in = new DefaultInterfaceImpl();
-        System.out.println(in.b());
+        DefaultInterface calculator = new DefaultInterfaceImpl();
+        System.out.println(calculator.addThree(1d, 2d, 3d));
 
         DefaultInterface.staticMethod();
 
@@ -28,11 +23,6 @@ public class DefaultInterfaceImpl implements DefaultInterface {
         new Thread(() -> {
             System.out.println("aaaaaaaaaaaaa");
         });
-
-
-
-
-
 
 
     }
