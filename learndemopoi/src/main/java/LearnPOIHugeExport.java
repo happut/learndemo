@@ -1,3 +1,5 @@
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
@@ -5,6 +7,7 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,11 +54,18 @@ public class LearnPOIHugeExport {
         }
         File file = new File(basePath + exportFileName);
         //文件输出流
-        FileOutputStream outStream = new FileOutputStream(file);
-        workBook.write(outStream);
+        final FileOutputStream outStream = new FileOutputStream(file);
+        workBook.write(new OutputStream() {
+            @Override
+            public void write(int b) throws IOException {
+                outStream.write(b);
+            }
+        });
         outStream.flush();
         outStream.close();
         System.out.println("导出2007文件成功！文件导出路径：--" + basePath + exportFileName);
+
+
     }
 }
 
