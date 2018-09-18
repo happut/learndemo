@@ -6,11 +6,12 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 
-@Document(indexName = "testgoods",type = "goods")
+@Document(indexName = "filebeat-orange-2018.09",type = "orange")
 @Getter
 @Setter
 public class GoodsInfo implements Serializable {
     private Long id;
-    private String name;
-    private String description;
+    private String source;
+    private String host;
+    private String interfaceName;
 }
