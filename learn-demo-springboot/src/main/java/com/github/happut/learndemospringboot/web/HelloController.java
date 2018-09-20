@@ -10,11 +10,14 @@ import org.elasticsearch.search.aggregations.*;
 import org.elasticsearch.search.aggregations.bucket.histogram.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
+import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,17 +59,21 @@ public class HelloController {
     public String test() {
 
         //QueryBuilders.rangeQuery("time_local").from(DateTime.now().minusHours(12).toDate().toString()).to(new Date())
+        DateTime end = DateTime.parse(DateTime.now().minusDays(18).toString("yyyy-MM-dd HH:00:00"), DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
         QueryBuilder query = QueryBuilders.boolQuery()
                 .must(QueryBuilders.termQuery("interface.keyword", "/api/dataQuery/ce3e38da2c724624bcdaa1e4a078f339"))
-                .must(QueryBuilders.rangeQuery("@timestamp").gt(DateTime.now().minusHours(24)).lt(DateTime.now()));
+                .must(QueryBuilders.rangeQuery("@timestamp").gt(end.minusHours(24)).lt(end));
         System.out.println(query.toString());
 
-        DateHistogramAggregationBuilder agg = AggregationBuilders.dateHistogram("groupDate").field("@timestamp").dateHistogramInterval(DateHistogramInterval.HOUR).order(Histogram.Order.KEY_DESC);
+        DateHistogramAggregationBuilder agg = AggregationBuilders.dateHistogram("groupDate")
+                .field("@timestamp")
+                .dateHistogramInterval(DateHistogramInterval.HOUR)
+                .order(Histogram.Order.KEY_DESC);
         System.out.println(agg.toString());
 
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
                 .withQuery(query)
-                .withIndices("filebeat-orange-2018.09")
+                .withIndices("filebeat-orange-2018.09","filebeat-orange-2018.08")
                 .withTypes("orange")
                 .addAggregation(agg)
                 .build();
@@ -86,8 +93,8 @@ public class HelloController {
             InternalDateHistogram modelTerms = (InternalDateHistogram) aggregation;
             System.out.println(modelTerms.getBuckets().size());
             for (InternalDateHistogram.Bucket actionTypeBucket : modelTerms.getBuckets()) {
-                System.out.println(actionTypeBucket.getKey().getClass().getSimpleName());
-                map.put(((DateTime) actionTypeBucket.getKey()).toString("yyyy-MM-dd HH:mm:ss", Locale.CHINA), actionTypeBucket.getDocCount());
+                String time = new DateTime(((DateTime) actionTypeBucket.getKey()).toDate()).toString("yyyy-MM-dd HH:mm:ss");
+                map.put(time, actionTypeBucket.getDocCount());
 
 
             }
@@ -98,6 +105,7 @@ public class HelloController {
     }
 
     public static void main(String[] args) {
-        System.out.println(DateTime.parse("2018-09-17T11:00:00.000Z"));
+        System.out.println(DateTime.now().getDayOfMonth());
+        System.out.println(DateTime.now().getMonthOfYear());
     }
 }
