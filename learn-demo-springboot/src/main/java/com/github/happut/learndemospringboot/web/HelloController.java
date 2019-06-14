@@ -1,30 +1,13 @@
 package com.github.happut.learndemospringboot.web;
 
-import com.alibaba.fastjson.JSON;
 import com.github.happut.learndemospringboot.respository.GoodsRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.aggregations.*;
-import org.elasticsearch.search.aggregations.bucket.histogram.*;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
-import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.*;
 
 @Slf4j
 @Controller
@@ -33,11 +16,11 @@ public class HelloController {
     @Autowired
     private RestTemplateBuilder restTemplateBuilder;
 
-    @Autowired
-    private GoodsRepository goodsRepository;
+//    @Autowired
+//    private GoodsRepository goodsRepository;
 
-    @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+//    @Autowired
+//    private ElasticsearchTemplate elasticsearchTemplate;
 
     @RequestMapping("/hello")
     public String index() {
@@ -46,14 +29,14 @@ public class HelloController {
         return "Hello World" + forObject;
     }
 
-    @RequestMapping("/")
-    public String index(ModelMap map) {
-        // 加入一个属性，用来在模板中读取
-        map.addAttribute("host", "http://blog.didispace.com");
-        // return模板文件的名称，对应src/main/resources/templates/index.html
-        return "index";
-    }
-
+//    @RequestMapping("/")
+//    public String index(ModelMap map) {
+//        // 加入一个属性，用来在模板中读取
+//        map.addAttribute("host", "http://blog.didispace.com");
+//        // return模板文件的名称，对应src/main/resources/templates/index.html
+//        return "index";
+//    }
+/*
     @RequestMapping("/query")
     @ResponseBody
     public String test() {
@@ -107,5 +90,5 @@ public class HelloController {
     public static void main(String[] args) {
         System.out.println(DateTime.now().getDayOfMonth());
         System.out.println(DateTime.now().getMonthOfYear());
-    }
+    }*/
 }
