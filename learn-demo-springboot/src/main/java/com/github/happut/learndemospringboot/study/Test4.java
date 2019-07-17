@@ -14,19 +14,21 @@ public class Test4 {
 //        String[] ids = new String[]{"YDJ0535Q4M5E1WWX"};
 //        String[] ids = new String[]{"YDJ0535Q4N10VZXX","YDJ0535Q4N15MYZY"};
 //        String[] ids = new String[]{"YDJ0535Q4O14TXXY","YDJ0535Q4O18BYWY"};
-        String[] ids = new String[]{"YDJ0535Q4P141ZYZ","YDJ0535Q4PPQXXYX"};
+//        String[] ids = new String[]{"YDJ0535Q4P141ZYZ","YDJ0535Q4PPQXXYX"};
+//        String[] ids = new String[]{"YDJ0535Q4Q22UYYX","YDJ0535Q4Q2ATYXY"};
+                    String[] ids = new String[]{"YDJ0535Q4R14JYZZ","YDJ0535Q4R18DZYX"};
 
-        Arrays.stream(ids).forEach(id -> {
+                    Arrays.stream(ids).forEach(id -> {
 
 
-            for (int i = 0; i < 100; i++) {
-                try {
-                    String result = Jsoup.connect("https://c.m.163.com/reader/api/recommend/praise/add")
-                            .header("Content-Type", "application/x-www-form-urlencoded")
-                            .data("recommendId", id)
-                            .ignoreContentType(true)
-                            .post()
-                            .text();
+                        for (int i = 0; i < 100; i++) {
+                            try {
+                                String result = Jsoup.connect("https://c.m.163.com/reader/api/recommend/praise/add")
+                                        .header("Content-Type", "application/x-www-form-urlencoded")
+                                        .data("recommendId", id)
+                                        .ignoreContentType(true)
+                                        .post()
+                                        .text();
 //                    System.out.println(result);
                 } catch (IOException e) {
                     e.printStackTrace();
